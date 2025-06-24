@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fresh Flower Store - Beranda</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-image: url("https://i.pinimg.com/736x/08/95/96/089596801cdb4fdfe63088c1921633ad.jpg");
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            background-blend-mode: overlay;
+            background-color: rgba(244, 244, 244, 0.8);
+        }
+        header {
+            background-color: rgba(255, 105, 180, 0.9); /* Pink cerah dengan transparansi */
+            color: white;
+            padding: 1em 0;
+            text-align: center;
+        }
+
+        /* --- Gaya untuk Tulisan Berjalan (Marquee) --- */
+        .marquee-container {
+            width: 100%; /* Memastikan lebar penuh */
+            overflow: hidden; /* Sembunyikan teks di luar area */
+            white-space: nowrap; /* Pastikan teks tidak patah baris */
+            box-sizing: border-box; /* Pastikan padding tidak menambah lebar */
+            padding: 0.2em 0; /* Sedikit padding vertikal */
+        }
+
+        .marquee-text {
+            display: inline-block;
+            padding-left: 100%; /* Mulai teks dari luar kanan container */
+            animation: marquee 15s linear infinite; /* Durasi, kecepatan, dan pengulangan */
+            color: white; /* Warna teks berjalan, disesuaikan agar kontras di header */
+            font-weight: normal; /* Atur ketebalan font */
+            font-size: 1.1em; /* Ukuran font agar lebih terlihat */
+        }
+
+        @keyframes marquee {
+            0%   { transform: translate(0, 0); }
+            100% { transform: translate(-100%, 0); } /* Bergerak ke kiri sampai hilang */
+        }
+        /* --- Akhir Gaya Tulisan Berjalan --- */
+
+        nav {
+            background-color: rgba(255, 192, 203, 0.9); /* Pink muda dengan transparansi */
+            padding: 0.5em 0;
+            text-align: center;
+        }
+        nav a {
+            color: #333;
+            text-decoration: none;
+            padding: 0.5em 1em;
+            margin: 0 0.5em;
+            border-radius: 5px;
+        }
+        nav a:hover {
+            background-color: #ffb6c1; /* Pink lebih tua saat hover */
+        }
+        .container {
+            width: 80%;
+            max-width: 960px; /* Batasi lebar maksimum container */
+            margin: 2em auto;
+            padding: 1em;
+            background-color: rgba(255, 255, 255, 0.9); /* Latar belakang container putih transparan */
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 2em;
+        }
+        .product-card {
+            border: 1px solid #ddd;
+            padding: 1em;
+            text-align: center;
+            border-radius: 8px;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .product-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 1em;
+        }
+        .product-card h3 {
+            margin: 0.5em 0;
+            color: #ff69b4;
+        }
+        .product-card p {
+            color: #555;
+            margin-bottom: 1em;
+        }
+        .product-card .price {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #4CAF50; /* Changed from FFF8E7 to Green for better visibility based on typical use cases*/
+        }
+        .product-card button {
+            background-color: #ff69b4;
+            color: white;
+            border: none;
+            padding: 0.8em 1.5em;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-top: 1em;
+        }
+        .product-card button:hover {
+            background-color: #e05c9f;
+        }
+        footer {
+            text-align: center;
+            padding: 1em 0;
+            margin-top: 2em;
+            background-color: rgba(255, 105, 180, 0.9); /* Pink cerah */
+            color: white;
+        }
+
+        /* Gaya Spesifik untuk Tabel Daftar Harga Pita Card Bag */
+        #extra-product-section {
+            width: 80%;
+            max-width: 960px;
+            margin: 2em auto;
+            padding: 2em;
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        #extra-product-section h2 {
+            color: #FC9483; /* Keep this color for the title if you like it, or change to #ff69b4 for consistent pink */
+            text-align: center;
+            margin-top: 0;
+        }
+
+        #extra-product-section table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1em auto 0;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        #extra-product-section th, #extra-product-section td {
+            border: 1px solid #a7d9b5; /* Border warna hijau muda, as in your latest code */
+            padding: 10px;
+            text-align: left;
+        }
+
+        /* Gaya untuk header kolom Keterangan */
+        th:nth-child(1) {
+            background-color: #FFB6C1; /* Background pink muda */
+            color: #ff69b4; /* **Teks diubah menjadi pink!** */
+        }
+
+        /* Gaya untuk header kolom Harga (IDR) */
+        th:nth-child(2) {
+            background-color: #FFB6C1; /* Background pink muda */
+            color: #ff69b4; /* **Teks diubah menjadi pink!** */
+        }
+
+        td {
+            background-color: transparent;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1> ꧁༺ 𝓕𝓻𝓮𝓼𝓱 𝓕𝓵𝓸𝔀𝓮𝓻 𝓢𝓽𝓸𝓻𝓮 ༻꧂ </h1>
+        <div class="marquee-container">
+            <span class="marquee-text">Bunga Segar untuk Setiap Momen Spesial Anda</span>
+        </div>
+    </header>
+    <nav>
+        <a href="toko bunga kita.html">Beranda</a>
+        <a href="produkbunga.html">Produk</a>
+        <a href="contact flower.html">Kontak</a>
+        <a href="Profile.html">Profile</a>
+    </nav>
+
+    <div class="container">
+        <h2>Selamat Datang di Fresh Flower Store!</h2>
+        <p>Kami menyediakan berbagai macam bunga segar pilihan untuk setiap kebutuhan Anda.</p>
+        <p>Baik untuk hadiah spesial, dekorasi acara, atau sekadar mempercantik ruangan, kami punya yang Anda cari.</p>
+    </div>
+
+    <div class="container">
+        <h2>Produk Unggulan Kami</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="https://i.pinimg.com/736x/ea/b7/55/eab75565ea34792564fd0e6de1b315a8.jpg" width="300" height="300" alt="Buket Mawar Merah"/>
+                <h3>Buket Mawar Merah</h3>
+                <p>Mawar merah segar, pilihan klasik untuk mengungkapkan cinta.</p>
+                <p class="price">Rp 250.000</p>
+                <button onclick="window.location.href='detail buket mawar merah.html'">Lihat Detail</button>
+            </div>
+            <div class="product-card">
+                <img src="https://i.pinimg.com/736x/cf/4c/5b/cf4c5b5025c268bfa5720279128a37cd.jpg" width="300" height="300" alt="Buket Bunga Lily"/>
+                <h3>Buket Bunga Lily</h3>
+                <p>Lily putih yang elegan, cocok untuk hadiah atau dekorasi.</p>
+                <p class="price">Rp 300.000</p>
+                <button onclick="window.location.href='detail bunga lily.html'">Lihat Detail</button>
+            </div>
+            <div class="product-card">
+                <img src="https://i.pinimg.com/736x/47/c5/e0/47c5e08d73d917717ec2565f4960724b.jpg" width="300" height="300" alt="Arrangement Bunga Campuran"/>
+                <h3>Arrangement Bunga Campuran</h3>
+                <p>Kombinasi bunga-bunga pilihan untuk setiap kesempatan.</p>
+                <p class="price">Rp 350.000</p>
+                <button onclick="window.location.href='detail bunga campuran.html'">Lihat Detail</button>
+            </div>
+            <div class="product-card">
+                <img src="https://i.pinimg.com/736x/bd/6a/ec/bd6aec14520f3b5763ac221063db719e.jpg" width="300" height="200" alt="Buket Tulip Pink"/>
+                <h3>Buket Tulip Pink</h3>
+                <p>Tulip berwarna-warni, ceria dan menawan.</p>
+                <p class="price">Rp 280.000</p>
+                <button onclick="window.location.href='detail tulip pink.html'">Lihat Detail</button>
+            </div>
+            <div class="product-card">
+                <img src="https://i.pinimg.com/736x/b0/fb/45/b0fb454a046e184e8b3d1cfadda575ac.jpg" width="300" height="300" alt="Buket White Rose"/>
+                <h3>Buket White Rose</h3>
+                <p>Mawar putih yang elegan, cocok untuk hadiah atau dekorasi.</p>
+                <p class="price">Rp 400.000</p>
+                <button onclick="window.location.href='detail white rose.html'">Lihat Detail</button>
+            </div>
+            <div class="product-card">
+                <img src="https://i.pinimg.com/736x/41/16/0f/41160ffa67a8637e9177ccf08e2b1d98.jpg" width="300" height="300" alt="Buket Tulip Ungu"/>
+                <h3>Buket Tulip Ungu</h3>
+                <p>Tulip berwarna-warni, ceria dan menawan.</p>
+                <p class="price">Rp 900.000</p>
+                <button onclick="window.location.href='detail tulip ungu.html'">Lihat Detail</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="extra-product-section" class="container">
+        <h2>Extra Product</h2>
+        <table>
+            <tr>
+                <th>Keterangan</th>
+                <th>Harga (IDR)</th>
+            </tr>
+            <tr>
+                <td>Pita</td>
+                <td>Rp15.000</td>
+            </tr>
+            <tr>
+                <td>Card</td>
+                <td>Rp10.000</td>
+            </tr>
+            <tr>
+                <td>Bag</td>
+                <td>Rp20.000</td>
+            </tr>
+            <tr>
+                <td>Coklat</td>
+                <td>Rp35.000</td>
+            </tr>
+            <tr>
+                <td>Boneka</td>
+                <td>Rp50.000</td>
+            </tr>
+        </table>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Fresh Flower Store. All rights reserved.</p>
+    </footer>
+</body>
+</html>
